@@ -1,7 +1,8 @@
 # Design Patterns In Ruby
 
 - [Overview](#fourteen-out-of-twenty-three)
-- [Composite Pattern](#composite-pattern)
+1. [Template Method Pattern](#1-template-method-pattern)
+4. [Composite Pattern](#4-composite-pattern)
 
 ## Patterns for Patterns
 The GoF opened their book with a discussion of some general principles, a set of meta-design patterns. These ideas boil down to four + one points:
@@ -61,7 +62,15 @@ To give you a preview of what lies in store for you, here is a quick overview of
 
 - Ever have the feeling that you are using the wrong programming language to solve your problem? As crazy as it sounds, perhaps you should stop trying to solve your problem directly and build an **Interpreter** for a language that solves your problem more easily.
 
-## Composite Pattern
+## 1. Template Method Pattern
+
+The general idea of the Template Method pattern is to build an abstract base class with a skeletal method. This skeletal method (also called a template method) drives the bit of the processing that needs to vary, but it does so by making calls to abstract methods, which are then supplied by the concrete subclasses. We pick the variation that we want by selecting one of those concrete subclasses.
+
+Non-abstract methods that can be overridden in the concrete classes of the Template Method pattern are called hook methods. Hook methods permit the concrete classes to choose to override the base implementation and do something different or to simply accept the default implementation. Frequently, the base class will define hook methods solely to let the concrete subclass know what is goings on.
+
+Unfortunately, the Template Method pattern has some drawbacks, most of which stem from the fact that this pattern is built around inheritance.
+
+## 4. Composite Pattern
 
 Composite pattern suggests that we build up bigger objects from small sub-objects, which might themselves be made up of still smaller sub-sub-objects.
 The Composite pattern lets us build arbitrarily deep trees of objects in which we can treat any of the interior nodes—the composites—just like any of the leaf nodes.
