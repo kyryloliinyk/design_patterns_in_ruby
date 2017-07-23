@@ -3,6 +3,7 @@
 - [Overview](#fourteen-out-of-twenty-three)
 1. [Template Method Pattern](#1-template-method-pattern)
 2. [Strategy Object Pattern](#2-strategy-object-pattern)
+3. [Observer Pattern](#3-observer-pattern)
 4. [Composite Pattern](#4-composite-pattern)
 
 ## Patterns for Patterns
@@ -88,6 +89,14 @@ We can get the data from the context to the strategy by having the context objec
 ### Quick-and-Dirty Strategies with Proc
 
 You can look at a strategy as a lump of executable code that knows how to do something — format text, for example — and is wrapped up in an object. This should sound familiar because it is also a good description of a Proc — a chunk of code wrapped in an object.
+
+## 3. Observer Pattern
+
+The Observer pattern allows you to build components that know about the activities of other components without having to tightly couple everything together in an unmanageable mess of code-flavored spaghetti. By creating a clean interface between the source of the news (the observable object) and the consumer of that news (the observers), the Observer pattern moves the news without tangling things up.
+
+Most of the work in implementing the Observer pattern occurs in the subject or observable class. In Ruby, we can factor that mechanism out into either a superclass or (more likely) a module. The interface between observer and observable can be a complex as you like, but if you are building a simple observer maybe standard ‘observer’ module will be fine.
+
+Most of the problems that come up in using the Observer pattern revolve around the frequency and timing of the updates. Sometimes the sheer volume of updates can be a problem. For example, an observer might register with a subject, unaware that the subject is going to spew out thousands of updates each second. The subject class can help with all of this by avoiding broadcasting redundant updates.
 
 ## 4. Composite Pattern
 
