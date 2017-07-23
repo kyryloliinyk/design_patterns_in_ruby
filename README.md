@@ -2,6 +2,7 @@
 
 - [Overview](#fourteen-out-of-twenty-three)
 1. [Template Method Pattern](#1-template-method-pattern)
+2. [Strategy Object Pattern](#2-strategy-object-pattern)
 4. [Composite Pattern](#4-composite-pattern)
 
 ## Patterns for Patterns
@@ -70,13 +71,33 @@ Non-abstract methods that can be overridden in the concrete classes of the Templ
 
 Unfortunately, the Template Method pattern has some drawbacks, most of which stem from the fact that this pattern is built around inheritance.
 
+## 2. Strategy Object Pattern
+
+The GoF call this “pull the algorithm out into a separate object” technique the Strategy pattern. The key idea underlying the Strategy pattern is to define a family of objects, the strategies, which all do the same thing.
+
+![strategy object diagram](src/strategy-1.png)
+
+The Strategy pattern is a delegation-based approach to solving the same problem as the Template Method pattern. Instead of teasing out the variable parts of your algorithm and pushing them down into subclasses, you simply implement each version of your algorithm as a separate object. You can then vary the algorithm by supplying different strategy objects to the context—one strategy for producing HTML and a different one for outputting PDF files, for example, or perhaps one strategy for calculating Virginia taxes and a different one for computing Pennsylvania taxes.
+
+With the Template Method pattern, we make our decision when we pick our concrete subclass. In the Strategy pattern, we make our decision by selecting a strategy class at runtime.
+
+### Sharing Data between the Context and the Strategy
+
+We can get the data from the context to the strategy by having the context object pass a reference to itself to the strategy object. The strategy object can then call methods on the context to get at the data it needs.
+
+### Quick-and-Dirty Strategies with Proc
+
+You can look at a strategy as a lump of executable code that knows how to do something — format text, for example — and is wrapped up in an object. This should sound familiar because it is also a good description of a Proc — a chunk of code wrapped in an object.
+
 ## 4. Composite Pattern
 
 Composite pattern suggests that we build up bigger objects from small sub-objects, which might themselves be made up of still smaller sub-sub-objects.
 The Composite pattern lets us build arbitrarily deep trees of objects in which we can treat any of the interior nodes—the composites—just like any of the leaf nodes.
 
 To build the Composite pattern, you need three moving parts:
+
 ![composite diagram](src/composite-1.png)
+
 - First, you need a common interface or base class for all of your objects – component.
 - Second, you need one or more leaf classes — that is, the simple, indivisible building blocks of the process. It should, of course, implement the Component interface.
 - Third, we need at least one higher-level class, called composite. It is a component, but it is also a higher-level object that is built from subcomponents.
