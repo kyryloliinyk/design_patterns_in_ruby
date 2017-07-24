@@ -5,6 +5,7 @@
 2. [Strategy Object Pattern](#2-strategy-object-pattern)
 3. [Observer Pattern](#3-observer-pattern)
 4. [Composite Pattern](#4-composite-pattern)
+5. [Iterator Pattern](#5-iterator-pattern)
 
 ## Patterns for Patterns
 The GoF opened their book with a discussion of some general principles, a set of meta-design patterns. These ideas boil down to four + one points:
@@ -94,7 +95,7 @@ You can look at a strategy as a lump of executable code that knows how to do som
 
 The Observer pattern allows you to build components that know about the activities of other components without having to tightly couple everything together in an unmanageable mess of code-flavored spaghetti. By creating a clean interface between the source of the news (the observable object) and the consumer of that news (the observers), the Observer pattern moves the news without tangling things up.
 
-Most of the work in implementing the Observer pattern occurs in the subject or observable class. In Ruby, we can factor that mechanism out into either a superclass or (more likely) a module. The interface between observer and observable can be a complex as you like, but if you are building a simple observer maybe standard ‘observer’ module will be fine.
+Most of the work in implementing the Observer pattern occurs in the subject or observable class. In Ruby, we can factor that mechanism out into either a superclass or (more likely) a module. The interface between observer and observable can be a complex as you like, but if you are building a simple observer maybe standard Ruby's `Observer` module will be fine.
 
 Most of the problems that come up in using the Observer pattern revolve around the frequency and timing of the updates. Sometimes the sheer volume of updates can be a problem. For example, an observer might register with a subject, unaware that the subject is going to spew out thousands of updates each second. The subject class can help with all of this by avoiding broadcasting redundant updates.
 
@@ -112,3 +113,39 @@ To build the Composite pattern, you need three moving parts:
 - Third, we need at least one higher-level class, called composite. It is a component, but it is also a higher-level object that is built from subcomponents.
 
 The error that crops up so frequently with the Composite pattern is assuming that the tree is only one level deep—that is, assuming that all of the child components of a composite object are, in fact, leaf objects and not other composites.
+
+## 5. Iterator Pattern
+
+Iterator pattern provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+In other words, an Iterator provides the outside world with a sort of movable pointer into the objects stored inside an otherwise opaque aggregate object.
+
+### Internal Iterators versus External Iterators
+
+External iterators certainly have some advantages. For example, when you use an external iterator, the client drives the iteration. With an external iterator, you won’t call next until you are good and ready for the next element. With an internal iterator, by contrast, the aggregate relentlessly pushes the code block to accept item after item.
+
+A second advantage of external iterators is that, because they are external, you can share them — you can pass them around to other methods and objects.
+
+### Default Ruby implementation
+
+If you do find yourself creating an aggregate class and equipping it with an internal iterator, you should probably consider including the `Enumerable` mixin module in your class.
+
+One of the dangerous things with iterators is: What happens if the aggregate object changes while you are iterating through it?
+Here is default array behavior in Ruby:
+
+```ruby
+array=['red', 'green', 'blue', 'purple']
+
+array.each do | color |
+  puts(color)
+  if color == 'green'
+    array.delete(color)
+  end
+end
+```
+```shell
+red
+green
+purple
+
+=> ["red", "blue", "purple"]
+```
