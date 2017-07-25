@@ -6,6 +6,7 @@
 3. [Observer Pattern](#3-observer-pattern)
 4. [Composite Pattern](#4-composite-pattern)
 5. [Iterator Pattern](#5-iterator-pattern)
+6. [Command Pattern](#6-command-pattern)
 
 ## Patterns for Patterns
 The GoF opened their book with a discussion of some general principles, a set of meta-design patterns. These ideas boil down to four + one points:
@@ -149,3 +150,11 @@ purple
 
 => ["red", "blue", "purple"]
 ```
+
+## 6. Command Pattern
+
+With the Command pattern, we construct objects that know how to perform some very specific actions. The key word here is “specific.” A command instance in the Command pattern doesn’t know how to change any employee’s address; instead, it knows how to move one specific employee to his new house.
+
+Depending on the complexity of your commands, you can implement them either as a full-scale class or as a simple code block.
+
+The key thing about the Command pattern is that it separates the thought from the deed. When you use this pattern, you are no longer simply saying, “Do this”; instead, you are saying, “Remember how to do this,” and, sometime later, “Do that thing that I told you to remember.” Even in the lightweight code block-based renditions of the Command pattern available in Ruby, the two-part aspect of this pattern adds some serious complexity to your code. Make sure that you really need that complexity before you pull the Command pattern out of your bag of tricks.
