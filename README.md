@@ -1,12 +1,13 @@
 # Design Patterns In Ruby
 
 - [Overview](#fourteen-out-of-twenty-three)
-1. [Template Method Pattern](#1-template-method-pattern)
-2. [Strategy Object Pattern](#2-strategy-object-pattern)
-3. [Observer Pattern](#3-observer-pattern)
-4. [Composite Pattern](#4-composite-pattern)
-5. [Iterator Pattern](#5-iterator-pattern)
-6. [Command Pattern](#6-command-pattern)
+1. [Template Method](#1-template-method-pattern)
+2. [Strategy Object](#2-strategy-object-pattern)
+3. [Observer](#3-observer-pattern)
+4. [Composite](#4-composite-pattern)
+5. [Iterator](#5-iterator-pattern)
+6. [Command](#6-command-pattern)
+7. [Adapter](#7-adapter-pattern)
 
 ## Patterns for Patterns
 The GoF opened their book with a discussion of some general principles, a set of meta-design patterns. These ideas boil down to four + one points:
@@ -158,3 +159,11 @@ With the Command pattern, we construct objects that know how to perform some ver
 Depending on the complexity of your commands, you can implement them either as a full-scale class or as a simple code block.
 
 The key thing about the Command pattern is that it separates the thought from the deed. When you use this pattern, you are no longer simply saying, “Do this”; instead, you are saying, “Remember how to do this,” and, sometime later, “Do that thing that I told you to remember.” Even in the lightweight code block-based renditions of the Command pattern available in Ruby, the two-part aspect of this pattern adds some serious complexity to your code. Make sure that you really need that complexity before you pull the Command pattern out of your bag of tricks.
+
+## 7. Adapter Pattern
+
+Adapters exist to soak up the differences between the interfaces that we need and the objects that we have. An adapter supports the inter- face that we need on the outside, but it implements that interface by making calls to an object hidden inside—an object that does everything we need it to do, but does it via the wrong interface.
+
+![adapter diagram](src/strategy-1.png)
+
+The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually per- forms the work. Perhaps in a perfect world all interfaces would line up perfectly and the client would talk directly to the adaptee. In the real world, however, we need to build adapters because the interface that the client is expecting is not the interface that the adaptee is offering.
