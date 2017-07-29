@@ -9,6 +9,7 @@
 6. [Command](#6-command-pattern)
 7. [Adapter](#7-adapter-pattern)
 8. [Proxy](#8-proxy-pattern)
+9. [Decorator](#9-decorator-pattern)
 
 ## Patterns for Patterns
 The GoF opened their book with a discussion of some general principles, a set of meta-design patterns. These ideas boil down to four + one points:
@@ -180,3 +181,17 @@ The proxy does not change the interface; the interface of the proxy is exactly t
 **Virtual proxies**: Other times, it is wise to delay the creation of expensive objects until they are absolutely needed. Especially in cases where such instantiation may not be needed at all. A great example of this type of proxy is the ActiveRecord::Associations::CollectionProxy in Rails. Such proxies are known as virtual proxies.
 
 **Remote proxies**: Occasionally, it is necessary to locally represent an object that exists on a remote system, hiding the complexity of traversing the network from the local client. Such proxies are known as remote proxies.
+
+## 9. Decorator Pattern
+
+Decorators allow us to add behavior to objects without affecting other objects of the same class. The decorator pattern is a useful alternative to creating sub-classes.
+
+The Decorator pattern is a straightforward technique that you can use to assemble exactly the functionality that you need at runtime. It offers an alternative to creating a monolithic object that supports every possible feature. Instead, with the Decorator pattern, you create one class that covers the basic functionality and a set of decorators to go with it. Each decorator supports the same core interface, but adds its own twist on that interface.
+
+The key implementation idea of the Decorator pattern is that the decorators are essentially shells: Each takes in a method call, adds its own special twist, and passes the call on to the next component in line. That next component may be another decorator, which adds yet another twist, or it may be the final, real object, which actually completes the basic request.
+
+The classic Decorator pattern is loved more by the folks who build the thing than by those who use it. The irritating moment comes when someone tries to assemble all of these little building block classes into a working whole. Instead of being able to instantiate a single object the client has to put all of the pieces together itself.
+
+Another potential drawback of the Decorator pattern is the performance over- head associated with a long chain of decorators.
+
+Finally, one drawback of the method-aliasing technique for decorating objects is that it tends to make your code harder to debug.
