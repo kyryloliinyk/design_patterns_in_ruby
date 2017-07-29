@@ -8,6 +8,7 @@
 5. [Iterator](#5-iterator-pattern)
 6. [Command](#6-command-pattern)
 7. [Adapter](#7-adapter-pattern)
+8. [Proxy](#8-proxy-pattern)
 
 ## Patterns for Patterns
 The GoF opened their book with a discussion of some general principles, a set of meta-design patterns. These ideas boil down to four + one points:
@@ -167,3 +168,15 @@ Adapters exist to soak up the differences between the interfaces that we need an
 ![adapter diagram](src/strategy-1.png)
 
 The client expects the target to have a certain interface. But unknown to the client, the target object is really an adapter, and buried inside of the adapter is a reference to a second object, the adaptee, which actually per- forms the work. Perhaps in a perfect world all interfaces would line up perfectly and the client would talk directly to the adaptee. In the real world, however, we need to build adapters because the interface that the client is expecting is not the interface that the adaptee is offering.
+
+## 8. Proxy Pattern
+
+Proxy object serves as a layer between the client and the 'real' object. It does not know anything about the internal structure of 'real' object, but provides additional logic for it.
+
+The proxy does not change the interface; the interface of the proxy is exactly the same as the interface of its subject. Instead of trying to transform the interface of that inner object in the same way that an adapter does, the proxy tries to control access to it.
+
+**Protection proxies**: Sometimes, in the interest of security, it is prudent to place a proxy object in front of an object in order to add additional security. Such proxies are known as protection proxies.
+
+**Virtual proxies**: Other times, it is wise to delay the creation of expensive objects until they are absolutely needed. Especially in cases where such instantiation may not be needed at all. A great example of this type of proxy is the ActiveRecord::Associations::CollectionProxy in Rails. Such proxies are known as virtual proxies.
+
+**Remote proxies**: Occasionally, it is necessary to locally represent an object that exists on a remote system, hiding the complexity of traversing the network from the local client. Such proxies are known as remote proxies.
