@@ -10,6 +10,7 @@
 7. [Adapter](#7-adapter-pattern)
 8. [Proxy](#8-proxy-pattern)
 9. [Decorator](#9-decorator-pattern)
+10. [Singleton](#10-singleton-pattern)
 
 ## Patterns for Patterns
 The GoF opened their book with a discussion of some general principles, a set of meta-design patterns. These ideas boil down to four + one points:
@@ -195,3 +196,12 @@ The classic Decorator pattern is loved more by the folks who build the thing tha
 Another potential drawback of the Decorator pattern is the performance over- head associated with a long chain of decorators.
 
 Finally, one drawback of the method-aliasing technique for decorating objects is that it tends to make your code harder to debug.
+
+## 10. Singleton Pattern
+
+The motivation behind the Singleton pattern is very simple: There are some things that are unique. Programs frequently have a single configuration file. Many applications need to talk to exactly one database. If you only ever have one instance of a class and a lot of code that needs access to that instance, it seems silly to pass the object from one method to another. In this kind of situation, you may build a singleton — a class that can have only one instance and that provides global access to that one instance.
+
+To create a singleton class we need just two things. Firstly, define class variable for holding instance with getter method for it. Secondly, prevent other objects from creating more instances of your sinlgeton by making default `new` constructor private.
+All these actions can be made by simply including Singleton module from Ruby's standard library. With the only difference that the instance will created in lazy mode, while in our example eager instantiation used.
+
+There are two other approaches to create a singleton. We could use a global variable/constant. But it's not secure because it can be redefined somewhere in the code accidentally. And we could implement all the behavior like class' methods and variables. But this is not convenient.
