@@ -1,8 +1,8 @@
 class ReportBuilder
-  def initialize(strategy:, report_data:)
-    @strategy = strategy
-    @report_data = report_data
-    @document = strategy.create_document
+  def initialize(factory)
+    @strategy = factory.strategy
+    @report_data = factory.report_data
+    @document = @strategy.create_document
   end
 
   def call

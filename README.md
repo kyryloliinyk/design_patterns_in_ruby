@@ -11,6 +11,8 @@
 8. [Proxy](#8-proxy-pattern)
 9. [Decorator](#9-decorator-pattern)
 10. [Singleton](#10-singleton-pattern)
+11. [Factory Method](#11-factory-method-pattern)
+12. [Abstract Factory](#12-abstract-factory-pattern)
 
 ## Patterns for Patterns
 The GoF opened their book with a discussion of some general principles, a set of meta-design patterns. These ideas boil down to four + one points:
@@ -205,3 +207,15 @@ To create a singleton class we need just two things. Firstly, define class varia
 All these actions can be made by simply including Singleton module from Ruby's standard library. With the only difference that the instance will created in lazy mode, while in our example eager instantiation used.
 
 There are two other approaches to create a singleton. We could use a global variable/constant. But it's not secure because it can be redefined somewhere in the code accidentally. And we could implement all the behavior like class' methods and variables. But this is not convenient.
+
+## 11. Factory Method Pattern
+
+The Factory Method pattern involves the application of the Template Method pattern to object creation. True to its Template Method roots, this pattern says to just leave the “which class” question to be answered by a subclass.
+
+The main subclass' idea is to incapsulate the logic about what classes should be used to reach desired original class' preferences.
+
+## 12. Abstract Factory Pattern
+
+The Abstract Factory pattern comes into play when you want to create compatible sets of objects.
+
+The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.

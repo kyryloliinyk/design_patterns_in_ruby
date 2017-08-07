@@ -1,7 +1,6 @@
 class ReportBuilder
-  def initialize(strategy:, report_data:)
-    @strategy = strategy
-    @report_data = report_data
+  def initialize(report_data)
+    @report_data = ReportData.new(report_data)
     @document = strategy.create_document
   end
 
@@ -13,7 +12,11 @@ class ReportBuilder
 
   private
 
-  attr_reader :strategy, :report_data, :document
+  attr_reader :report_data, :document
 
   delegate :section_one, :section_two, :render, to: :strategy
+
+  def strategy
+    raise NotImplementedError
+  end
 end
