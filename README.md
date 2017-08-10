@@ -13,6 +13,7 @@
 10. [Singleton](#10-singleton-pattern)
 11. [Factory Method](#11-factory-method-pattern)
 12. [Abstract Factory](#12-abstract-factory-pattern)
+13. [Builder](#13-builder-pattern)
 
 ## Patterns for Patterns
 The GoF opened their book with a discussion of some general principles, a set of meta-design patterns. These ideas boil down to four + one points:
@@ -219,3 +220,9 @@ The main subclass' idea is to incapsulate the logic about what classes should be
 The Abstract Factory pattern comes into play when you want to create compatible sets of objects.
 
 The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.
+
+## 13. Builder Pattern
+
+The very simple idea behind the Builder pattern is that you take this kind of construction logic and encapsulate it in a class all of its own. The **builder** class takes charge of assembling all of the components of a complex object. Each builder has an interface that lets you specify the configuration of your new object step by step. In a sense, a builder is sort of like a multipart new method, where objects are created in an extended process instead of all in one shot.
+
+![builder diagram](src/builder-1.png)
