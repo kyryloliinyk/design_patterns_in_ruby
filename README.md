@@ -11,8 +11,7 @@
 8. [Proxy](#8-proxy-pattern)
 9. [Decorator](#9-decorator-pattern)
 10. [Singleton](#10-singleton-pattern)
-11. [Factory Method](#11-factory-method-pattern)
-12. [Abstract Factory](#12-abstract-factory-pattern)
+11. [Factory](#11-factory-pattern)
 13. [Builder](#13-builder-pattern)
 
 ## Patterns for Patterns
@@ -209,20 +208,20 @@ All these actions can be made by simply including Singleton module from Ruby's s
 
 There are two other approaches to create a singleton. We could use a global variable/constant. But it's not secure because it can be redefined somewhere in the code accidentally. And we could implement all the behavior like class' methods and variables. But this is not convenient.
 
-## 11. Factory Method Pattern
+## 11. Factory Pattern
 
 The Factory Method pattern involves the application of the Template Method pattern to object creation. True to its Template Method roots, this pattern says to just leave the “which class” question to be answered by a subclass.
 
 The main subclass' idea is to incapsulate the logic about what classes should be used to reach desired original class' preferences.
 
-## 12. Abstract Factory Pattern
-
-The Abstract Factory pattern comes into play when you want to create compatible sets of objects.
-
-The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.
-
-## 13. Builder Pattern
+## 12. Builder Pattern
 
 The very simple idea behind the Builder pattern is that you take this kind of construction logic and encapsulate it in a class all of its own. The **builder** class takes charge of assembling all of the components of a complex object. Each builder has an interface that lets you specify the configuration of your new object step by step. In a sense, a builder is sort of like a multipart new method, where objects are created in an extended process instead of all in one shot.
 
 ![builder diagram](src/builder-1.png)
+
+## 13. Interpreter Pattern
+
+As a general rule, problems well suited to the Interpreter pattern tend to be self- contained, with crisp boundaries around them. For example, if you are writing code that searches for specific objects based on some specification, you might consider creating a query language.1 Conversely, if you are faced with the task of creating complex object configurations, you might think about building a configuration language.
+
+Interpreters typically work in two phases. First, the parser reads in the program text and produces a data structure, called an abstract syntax tree (AST). The AST represents the same information as the original program, but transformed into a tree of objects that, unlike the original program text, can be executed with reasonable efficiency. Second, the AST is evaluated against some set of external conditions, or context, to produce the desired computation.

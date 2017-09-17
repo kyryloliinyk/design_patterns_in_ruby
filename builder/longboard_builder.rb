@@ -6,20 +6,20 @@ class LongboardBuilder
     @attributes = {}
   end
 
-  def wheels=(size)
+  def wheels=(size:)
     @attributes[:wheels] = Wheels.new(size: size, type: @rider_level)
   end
 
-  def trucks=(type)
+  def trucks=(type:)
     @attributes[:trucks] = Trucks.new(type: type, width: @width)
   end
 
-  def deck=(flex)
+  def deck=(flex:)
     @attributes[:deck] = Deck.new(flex: flex, width: @width, length: @length)
   end
 
   def longboard(amount=1)
-    return unless attributes_are_valid?
+    raise 'SomeError' unless attributes_are_valid?
 
     return Longboard.new(@attributes) if amount == 1
     Array.new(amount) { Longboard.new(@attributes) }

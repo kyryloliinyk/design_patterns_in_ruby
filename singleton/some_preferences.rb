@@ -3,6 +3,10 @@ class SomePreferences
   DEFAULT_METHOD   = :get
   DEFAULT_PROTOCOL = :http
 
+  attr_reader :url, :method
+
+  private_class_method :new
+
   def self.instance
     @@instance ||= new
   end
@@ -16,9 +20,6 @@ class SomePreferences
     @method   = DEFAULT_METHOD
     @protocol = DEFAULT_PROTOCOL
   end
-
-  private_class_method :new
-  attr_reader :url, :method
 
   def url(value)
     @url = value
