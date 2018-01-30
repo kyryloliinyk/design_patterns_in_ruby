@@ -1,20 +1,30 @@
+# Decorator
+# Adds additional behavior
 class CustomPrintLongboard
-  def initialize(longboard, print_id)
+  # Takes base object as argument
+  # and other required stuff (custom_print object)
+  def initialize(longboard, custom_print)
     @longboard = longboard
-    @print_id = print_id
+    @custom_print = custom_print
   end
 
+  # Redefines base object's 'price' method
   def price
-    @longboard.price + custom_print.price
+    @longboard.price + @custom_print.price
   end
 
+  # Redefines base object's 'equipment' method
   def equipment
-    @longboard.merge(custom_print: custom_print.name)
+    @longboard.merge(custom_print: @custom_print.name)
   end
 
-  private
+  # Adds aditional behavior to base object
+  def decorated_object_behavior
+    #code
+  end
 
-  def custom_print
-    @custom_print ||= CustomPrint.find(@print_id)
+  # Supports all base object's behavior
+  def base_object_behavior
+    @longboard.base_object_behavior
   end
 end

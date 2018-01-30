@@ -2,7 +2,9 @@
 
 Класс `BaseLongboard` отвечает за создание лонгборда в базовой комплектации. Для создание такого объекта нужно передать аттрибуты `deck, truck, wheels`.
 
-Классы `CustomPrintLongboard` & `CustomGripTapeLongboard` создают объекты лонгбордов с дополнительными опциями `grip_tape` или `print`. В качестве аргумента они принимают **экземпляр базового лонгборда** и идентификатор кастомной детали. Декоратор не меняет поведение базового объекта, поэтому в этих классах также определяются методы `price` и `equipment`.
+Класс `CustomPrintLongboard` создает объект лонгборда с дополнительной опцией `print`. При инициализации он ожидает получить экземпляр `BaseLongboard` и `CustomPrint`.
+
+Декоратор не меняет поведение базового объекта. Поэтому он определяет методы `price` и `equipment`, которые декорируют поведение базового объекта. Также добавляет новое поведение объекту (`decorated_object_behavior`). Остальные обращения к декоратору должны быть делегированы базовому объекту (как в случае с `base_object_behavior`).
 
 ```ruby
 base_longboard = BaseLongboard.new(
@@ -11,6 +13,7 @@ base_longboard = BaseLongboard.new(
   wheels: some_wheels_object
 )
 
-longboard_with_print = CustomPrintLongboard.new(base_longboard, "print_id")
-ordered = CustomGripTapeLongboard(longboard_with_print, "grip_tape_id")
+custom_print = CustomPrint.new(some_arguments)
+
+longboard_with_print = CustomPrintLongboard.new(base_longboard, custom_print)
 ```

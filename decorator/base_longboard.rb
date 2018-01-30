@@ -1,3 +1,4 @@
+# Base class
 class BaseLongboard
   def initialize(deck:, truck:, wheels:)
     @deck = deck
@@ -15,5 +16,9 @@ class BaseLongboard
       truck: @truck.name,
       wheels: @wheels.name
     }
+  end
+
+  def base_object_behavior
+    #code
   end
 end
