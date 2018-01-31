@@ -1,11 +1,9 @@
+# Concrete class
 class PdfReport < ReportBuilder
-  def initialize(report_data)
-    super(report_data)
-  end
-
   private
 
-  def strategy
-    @strategy ||= PdfStrategy.new
+  # Decides what concrete formatter should be used
+  def formatter
+    @formatter ||= PdfFormatter.new
   end
 end
